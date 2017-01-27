@@ -23,6 +23,7 @@ import { ViewUserAdminComponent } from './view-user-admin/view-user-admin.compon
 import { ViewFeedbackAdminComponent } from './view-feedback-admin/view-feedback-admin.component';
 
 import { BookSlotComponent } from './book-slot/book-slot.component';
+import { BookingdetailsComponent } from './bookingdetails/bookingdetails.component';
 
 
 const routes: Routes = [
@@ -38,6 +39,8 @@ const routes: Routes = [
   { path: 'viewuseradmin', component: ViewUserAdminComponent },
   { path: 'viewfeedbackadmin', component: ViewFeedbackAdminComponent },
   { path: 'bookslot/:location', component: BookSlotComponent },
+  { path: 'bookingdetails/:slotNumber', component: BookingdetailsComponent },
+
 ];
 
 @NgModule({
@@ -54,7 +57,8 @@ const routes: Routes = [
     FeedbackComponent,
     ViewUserAdminComponent,
     ViewFeedbackAdminComponent,
-    BookSlotComponent
+    BookSlotComponent,
+    BookingdetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -5,27 +5,40 @@
   <span *ngFor="let slot of parkingSlot2; let num = index" class="slot">{{slot}}</span>
 </div>-->
 
-
+<div class="alert alert-danger center-content" *ngIf='warning.status'>
+  <strong>Warning!</strong> {{warning.message}}
+</div>
 <div class="container">
   <h2>{{locationName}} Parking Area</h2>
   <p>Chose slot:</p>
+
   <table class="table table-striped">
     <tbody>
       <tr class="slot">
-        <td *ngFor="let slot of parkingSlot1; let num = index" class="slot" (click)='bookSlot(slot)'>{{slot.slotNumber}}</td>
+        <td *ngFor="let slot of parkingSlot1; let num = index" class="slot" (click)='bookSlot(slot)'>
+          <span *ngIf='slot.slotStatus == "available"'>{{slot.slotNumber}}</span>
+          <span *ngIf='slot.slotStatus == "reserved"'> <img src="./assets/images/reserved.png" alt="reserved" class="reserved"></span>
+        </td>
       </tr>
       <tr class="empty-slot">
         <td class="empty-slot" colspan="10"></td>
       </tr>
 
       <tr class="slot">
-        <td *ngFor="let slot of parkingSlot2; let num = index" class="slot" (click)='bookSlot(slot)'>{{slot.slotNumber}}</td>
+        <td *ngFor="let slot of parkingSlot2; let num = index" class="slot" (click)='bookSlot(slot)'>
+
+          <span *ngIf='slot.slotStatus == "available"'>{{slot.slotNumber}}</span>
+          <span *ngIf='slot.slotStatus == "reserved"'> <img src="./assets/images/reserved.png" alt="reserved" class="reserved"></span>
+        </td>
       </tr>
       <tr class="empty-slot">
         <td class="empty-slot" colspan="10"></td>
       </tr>
       <tr class="slot">
-        <td *ngFor="let slot of parkingSlot3; let num = index" class="slot" (click)='bookSlot(slot)'>{{slot.slotNumber}}</td>
+        <td *ngFor="let slot of parkingSlot3; let num = index" class="slot" (click)='bookSlot(slot)'>
+          <span *ngIf='slot.slotStatus == "available"'>{{slot.slotNumber}}</span>
+          <span *ngIf='slot.slotStatus == "reserved"'> <img src="./assets/images/reserved.png" alt="reserved" class="reserved"></span>
+        </td>
       </tr>
 
     </tbody>

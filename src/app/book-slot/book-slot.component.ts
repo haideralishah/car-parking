@@ -5,6 +5,9 @@ import {
   Router,
   Routes
 } from '@angular/router';
+
+declare var firebase: any;
+
 @Component({
   selector: 'app-book-slot',
   templateUrl: './book-slot.component.html',
@@ -20,7 +23,43 @@ export class BookSlotComponent implements OnInit {
   parkingSlot2: any = [];
   parkingSlot3: any = [];
   obj: any = {};
-  constructor(private router: Router, private route: ActivatedRoute) {
+  bookedSlot: any = [];
+  constructor(public router: Router, public route: ActivatedRoute) {
+    route.params.subscribe(params => { this.location = params['location']; });
+
+    if (this.location == 'gj') {
+      this.locationName = 'Gulistan Johar'
+    }
+    else if (this.location == 'pp') {
+      this.locationName = 'Parking Plaza'
+    }
+    else if (this.location == 'km') {
+      this.locationName = 'Khadda Market'
+    }
+  }
+
+
+  reservedSlot = [];
+  updatedReservedSlot() {
+    for (var i = 0; i < this.parkingSlot1.length; i++) {
+      if (this.bookedSlot.indexOf(this.parkingSlot1[i].slotNumber) != -1) {
+        this.parkingSlot1[i].slotStatus = 'reserved';
+      }
+    }
+    for (var i = 0; i < this.parkingSlot2.length; i++) {
+      if (this.bookedSlot.indexOf(this.parkingSlot2[i].slotNumber) != -1) {
+        this.parkingSlot2[i].slotStatus = 'reserved';
+      }
+    }
+    for (var i = 0; i < this.parkingSlot3.length; i++) {
+      if (this.bookedSlot.indexOf(this.parkingSlot3[i].slotNumber) != -1) {
+        this.parkingSlot3[i].slotStatus = 'reserved';
+      }
+    }
+  }
+
+
+  ngOnInit() {
     for (var i = 0; i < 30; i++) {
       this.obj.slotNumber = i + 1;
       this.obj.slotStatus = 'available';
@@ -33,29 +72,40 @@ export class BookSlotComponent implements OnInit {
       }
       this.obj = {};
     }
-    console.log(this.parkingSlot1, 'this.parkingSlot4');
-    console.log(this.parkingSlot2, 'this.parkingSlot5');
-    console.log(this.parkingSlot3, 'this.parkingSlot6');
 
 
-    route.params.subscribe(params => { this.location = params['location']; });
-    console.log(this.location, 'location');
-    if (this.location == 'gj') {
-      this.locationName = 'Gulistan Johar'
-    }
-    else if (this.location == 'pp') {
-      this.locationName = 'Parking Plaza'
-    }
-    else if (this.location == 'km') {
-      this.locationName = 'Khadda Market'
-    }
+
+
+    firebase.database().ref('/bookedslots').on('child_added', (data) => {
+      let obj = data.val().slotNumber;
+      // obj.id = data.key;
+      this.bookedSlot.push(obj)
+
+      this.updatedReservedSlot()
+    })
   }
-
-  ngOnInit() {
-  }
-
+  warning: any = {};
   bookSlot(selectedSlot) {
     console.log(selectedSlot, 'selectedSlot');
+
+    if (selectedSlot.slotStatus == 'reserved') {
+      console.log(selectedSlot.slotStatus, 'selectedSlot.slotStatus');
+      this.warning.status = true;
+      this.warning.message = 'Already Reserved Slot';
+      setTimeout(() => {
+        this.warning.status = false;
+        this.warning.message = ''
+      }, 3000);
+    }
+    else {
+      this.router.navigate(['./bookingdetails', selectedSlot.slotNumber]);
+    }
+
+
+
+
+
+
   }
 
 }
