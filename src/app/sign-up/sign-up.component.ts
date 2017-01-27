@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-
+import {
+  RouterModule,
+  ActivatedRoute,
+  Router,
+  Routes
+} from '@angular/router';
 declare var firebase: any
 
 @Component({
@@ -9,7 +14,7 @@ declare var firebase: any
 })
 export class SignUpComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -17,13 +22,26 @@ export class SignUpComponent implements OnInit {
 
   registerNewUser(email, password, userName, mobNumber) {
     console.log(email, password, userName, mobNumber);
+    let that = this;
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then(user => {
+        console.log(user);
+        firebase.database().ref('users/' + user.uid).set({
+          email: email,
+          password: password,
+          userName: userName,
+          mobNumber: mobNumber
+        })
+        that.router.navigate(['./home']);
+      })
 
-    // firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
-    //   // Handle Errors here.
-    //   var errorCode = error.code;
-    //   var errorMessage = error.message;
-    //   // ...
-    // });
+
+      .catch(function (error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ...
+      });
   }
 
 }
