@@ -12,12 +12,18 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomeComponent } from './home/home.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { DataService } from './data.service';
+import { SigninComponent } from './signin/signin.component';
+import { ViewParkingComponent } from './view-parking/view-parking.component';
+import { ViewBookingAdminComponent } from './view-booking-admin/view-booking-admin.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'signup', component: SignUpComponent },
+  { path: 'signin', component: SigninComponent },
+  { path: 'viewparking', component: ViewParkingComponent },
+  { path: 'viewbookingadmin', component: ViewBookingAdminComponent },
 ];
 
 @NgModule({
@@ -25,7 +31,10 @@ const routes: Routes = [
     AppComponent,
     SignUpComponent,
     HomeComponent,
-    NavigationComponent
+    NavigationComponent,
+    SigninComponent,
+    ViewParkingComponent,
+    ViewBookingAdminComponent
   ],
   imports: [
     BrowserModule,

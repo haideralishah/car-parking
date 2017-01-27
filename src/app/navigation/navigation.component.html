@@ -12,7 +12,7 @@
       <li><a [routerLink]="['signup']" class="success-link" #signup (click)='setActive(signup, signin)'><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
       <li><a [routerLink]="['signin']" class="success-link" #signin (click)='setActive(signin, signup)'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </ul>
-    <ul class="nav navbar-nav navbar-right" *ngIf='dataService.currentNavBar == "adminAuth" || dataService.currentNavBar == "companyAuth" ||dataService.currentNavBar == "studentAuth"'>
+    <ul class="nav navbar-nav navbar-right" *ngIf='dataService.currentNavBar == "adminAuth" || dataService.currentNavBar == "userAuth"'>
       <li><a [routerLink]="['home']" class="success-link" #signup (click)='logout()'><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
     </ul>
   </div>
