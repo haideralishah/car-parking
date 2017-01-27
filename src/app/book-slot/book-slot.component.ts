@@ -181,7 +181,7 @@ export class BookSlotComponent implements OnInit {
               .subscribe(data => {
                 console.log(data);
               })
-            that.warning.message = 'Your reservation confirmed, please check your email.';
+            that.warning.message = 'Your reservation confirmed, please check your email. You will be charged 0.2$ per hour.';
             setTimeout(() => {
               that.warning.status = false;
               that.warning.message = ''
