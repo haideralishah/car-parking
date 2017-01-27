@@ -17,3 +17,8 @@
   </div>
   <button type="submit" class="btn btn-warning" (click)='registerNewUser(email.value, password.value, userName.value, mobNumber.value)'>Register</button>
 </form>
+
+<br> <br> <br>
+<div class="alert alert-danger center-content" *ngIf='error.status'>
+  <strong>Warning!</strong> {{error.message}}
+</div>
