@@ -1,3 +1,25 @@
-<p>
-  view-user-admin works!
-</p>
+<div class="alert alert-danger center-content" *ngIf='users.length == 0'>
+  <strong>Alert!</strong> No Booking Yet.
+</div>
+<div class="container" *ngIf='users.length > 0'>
+  <h2>Your booking details</h2>
+  <!--<p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>-->
+  <table class="table">
+    <thead>
+      <tr>
+        <th>User Name</th>
+        <th>Email</th>
+        <th>Cell Number</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users; let num = index">
+        <td *ngIf='user.id != userID'>{{user.userName}}</td>
+        <td *ngIf='user.id != userID'>{{user.email}}</td>
+        <td *ngIf='user.id != userID'> {{user.mobNumber}}</td>
+
+      </tr>
+
+    </tbody>
+  </table>
+</div>
