@@ -15,6 +15,13 @@ export class NavigationComponent implements OnInit {
   }
   el: any;
   secEl: any;
+  setActiveRoute(activeEl, el1, el2, el3?) {
+    this.dataService.activeTab = activeEl;
+    this.dataService.el1 = el1;
+    this.dataService.el2 = el2;
+    this.dataService.el3 = el3;
+    this.dataService.setActiveTab();
+  }
   setActive(el, secEl) {
     this.dataService.el1 = el;
     this.dataService.el2 = secEl;

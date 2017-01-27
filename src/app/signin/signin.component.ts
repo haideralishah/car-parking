@@ -23,7 +23,6 @@ export class SigninComponent implements OnInit {
 
   loginUser(email, password) {
     let that = this;
-    console.log(email, password);
     if (email.indexOf('@') == -1 || email.indexOf('.') == -1) {
       this.error.message = 'Email address is invalid.'
       this.error.status = true;
@@ -44,11 +43,9 @@ export class SigninComponent implements OnInit {
     else {
       firebase.auth().signInWithEmailAndPassword(email, password)
         .then((user) => {
-          console.log(user, 'dataaaaa');
           firebase.database().ref('/users/' + user.uid).once('value')
             .then(function (snapshot) {
               var userRoll = snapshot.val();
-              console.log(userRoll, 'company');
               if (userRoll.roll == 'admin') {
                 that.dataService.setNavBar('adminAuth');
                 that.router.navigate(['./viewbookingadmin']);
