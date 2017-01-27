@@ -1,0 +1,22 @@
+.container-custom{
+    background-color: #ffffff !important;
+}
+
+
+.custom-container{
+    width: 70% !important;
+    margin: 0 auto;
+    
+}
+
+.custom-container p {
+    font-size: 25px;
+}
+
+.your-feed{
+    text-align: left;
+}
+
+.feed-reply{
+       text-align: right;
+}

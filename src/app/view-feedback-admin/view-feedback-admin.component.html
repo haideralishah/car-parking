@@ -1,3 +1,63 @@
-<p>
-  view-feedback-admin works!
-</p>
+<!-- Trigger the modal with a button -->
+<!--<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal" *ngIf='currentUserFeedback.feedbackReply != ""'>Submit Feedback</button>-->
+<!--{{feedbackData}}-->
+
+
+<div *ngIf='currentUserFeedback.length > 0' class="custom-container">
+  <h2 *ngIf='currentUserFeedback.feedback'>Your Feedback</h2>
+  <p class="your-feed">{{currentUserFeedback.feedback}}</p>
+  <p class="feed-reply">{{currentUserFeedback.feedbackReply}}</p>
+</div>
+
+
+
+<div class="container" *ngIf='currentUserFeedback.length > 0'>
+  <h2>Users Feedback</h2>
+  <!--<p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>-->
+  <table class="table">
+    <thead>
+      <tr>
+        <th>User Name</th>
+        <th>Email Address</th>
+        <th>User Feedback</th>
+        <!--<th>Your Reply</th>-->
+        <th>Your Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let feed of currentUserFeedback; let num = index">
+        <td>{{feed.userName}}</td>
+        <td>{{feed.email}}</td>
+        <td>{{feed.feedback}}</td>
+        <td *ngIf='feed.feedbackReply != ""'>{{feed.feedbackReply}}</td>
+        <td *ngIf='feed.feedbackReply == ""'>
+          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal">Reply</button>
+          <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Feedback</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label for="comment">Feedback:</label>
+                    <textarea class="form-control" rows="5" id="comment" #feedback></textarea>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal" (click)='sendFeedback(feedback.value, feed)'>Reply Feedback</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal -->
