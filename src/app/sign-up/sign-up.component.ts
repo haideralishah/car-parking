@@ -15,14 +15,15 @@ export class SignUpComponent implements OnInit {
   }
 
 
-  registerNewUser(email, password) {
-    console.log(email, password);
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // ...
-    });
+  registerNewUser(email, password, userName, dob, mobNumber) {
+    console.log(email, password, userName, dob, mobNumber);
+
+    // firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
+    //   // Handle Errors here.
+    //   var errorCode = error.code;
+    //   var errorMessage = error.message;
+    //   // ...
+    // });
   }
 
 }
