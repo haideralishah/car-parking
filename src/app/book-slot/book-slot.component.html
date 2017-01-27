@@ -10,7 +10,7 @@
       <tr class="slot">
         <td *ngFor="let slot of parkingSlot1; let num = index" class="slot" (click)='bookSlot(slot)'>
           <span *ngIf='slot.slotStatus == "available"'>{{slot.slotNumber}}</span>
-          <span *ngIf='slot.slotStatus == "reserved"'> <img src="./assets/images/reserved.png" alt="reserved" class="reserved"></span>
+          <span *ngIf='slot.slotStatus == "reserved"'> <img src="./assets/images/reservedcar.png" alt="reserved" class="reserved"></span>
         </td>
       </tr>
       <tr class="empty-slot">
@@ -21,7 +21,7 @@
         <td *ngFor="let slot of parkingSlot2; let num = index" class="slot" (click)='bookSlot(slot)'>
 
           <span *ngIf='slot.slotStatus == "available"'>{{slot.slotNumber}}</span>
-          <span *ngIf='slot.slotStatus == "reserved"'> <img src="./assets/images/reserved.png" alt="reserved" class="reserved"></span>
+          <span *ngIf='slot.slotStatus == "reserved"'> <img src="./assets/images/reservedcar.png" alt="reserved" class="reserved"></span>
         </td>
       </tr>
       <tr class="empty-slot">
@@ -30,7 +30,7 @@
       <tr class="slot">
         <td *ngFor="let slot of parkingSlot3; let num = index" class="slot" (click)='bookSlot(slot)'>
           <span *ngIf='slot.slotStatus == "available"'>{{slot.slotNumber}}</span>
-          <span *ngIf='slot.slotStatus == "reserved"'> <img src="./assets/images/reserved.png" alt="reserved" class="reserved"></span>
+          <span *ngIf='slot.slotStatus == "reserved"'> <img src="./assets/images/reservedcar.png" alt="reserved" class="reserved"></span>
         </td>
       </tr>
 
