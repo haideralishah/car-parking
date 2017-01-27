@@ -175,7 +175,7 @@ export class BookSlotComponent implements OnInit {
             opt = new RequestOptions({
               headers: myHeaders
             })
-            let url = 'https://floating-castle-27628.herokuapp.com'
+            let url = 'http://localhost:3000'
             that.http.get(url + '/mailSend', opt)
               // .map(res => res.json())
               .subscribe(data => {
