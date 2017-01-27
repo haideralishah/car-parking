@@ -8,11 +8,12 @@ import {
 import { DataService } from '../data.service';
 
 @Component({
-  selector: 'app-book-parking',
-  templateUrl: './book-parking.component.html',
-  styleUrls: ['./book-parking.component.css']
+  selector: 'app-bookparkingnew',
+  templateUrl: './bookparkingnew.component.html',
+  styleUrls: ['./bookparkingnew.component.css']
 })
-export class BookParkingComponent implements OnInit {
+export class BookparkingnewComponent implements OnInit {
+
   location;
   constructor(private router: Router, private route: ActivatedRoute, public dataService: DataService) {
 
@@ -23,7 +24,7 @@ export class BookParkingComponent implements OnInit {
   setLocation(location) {
     console.log(location);
     this.dataService.setLocation(location);
-    this.router.navigate(['./bookparkingnew']);
+    this.router.navigate(['./bookingdetails']);
   }
 
 }

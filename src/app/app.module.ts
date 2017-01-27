@@ -24,6 +24,7 @@ import { ViewFeedbackAdminComponent } from './view-feedback-admin/view-feedback-
 
 import { BookSlotComponent } from './book-slot/book-slot.component';
 import { BookingdetailsComponent } from './bookingdetails/bookingdetails.component';
+import { BookparkingnewComponent } from './bookparkingnew/bookparkingnew.component';
 
 
 const routes: Routes = [
@@ -38,8 +39,10 @@ const routes: Routes = [
   { path: 'viewbookingadmin', component: ViewBookingAdminComponent },
   { path: 'viewuseradmin', component: ViewUserAdminComponent },
   { path: 'viewfeedbackadmin', component: ViewFeedbackAdminComponent },
-  { path: 'bookslot/:location', component: BookSlotComponent },
-  { path: 'bookingdetails/:slotNumber', component: BookingdetailsComponent },
+  
+  { path: 'bookslot', component: BookSlotComponent },
+  { path: 'bookingdetails', component: BookingdetailsComponent },
+    { path: 'bookparkingnew', component: BookparkingnewComponent },
 
 ];
 
@@ -58,7 +61,8 @@ const routes: Routes = [
     ViewUserAdminComponent,
     ViewFeedbackAdminComponent,
     BookSlotComponent,
-    BookingdetailsComponent
+    BookingdetailsComponent,
+    BookparkingnewComponent
   ],
   imports: [
     BrowserModule,

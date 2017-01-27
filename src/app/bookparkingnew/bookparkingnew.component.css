@@ -1,0 +1,29 @@
+.custom-container{
+    
+    background-color: #eea236;
+    border-color: #eea236;
+    color: #ffe0b4;
+
+    /*background: #449d44 url("../../../assets/images/homebg.jpg") no-repeat fixed center; */
+
+     /* The background image */
+    background-image: url("../../../assets/images/homebg.jpg");
+    /* Set a specified height, or the minimum height for the background image */
+    /*min-height: 500px;*/
+    /* Set background image to fixed (don't scroll along with the page) */
+    background-attachment: fixed;
+    /* Center the background image */
+    background-position: center;
+    /* Set the background image to no repeat */
+    background-repeat: no-repeat;
+    /* Scale the background image to be as large as possible */
+    background-size: cover;
+    /*background: #449d44 url("../../../assets/images/homebg.jpg") no-repeat fixed cover; */
+    height:180px; 
+    text-align: center;
+}
+
+.custom-container:hover{
+    color: #eea236;
+    background-color: #ffffff;
+}

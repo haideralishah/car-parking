@@ -31,4 +31,20 @@ export class DataService {
 
   }
 
+  detailsBookSlot;
+  setDetailsBookSlot(val) {
+    this.detailsBookSlot = val;
+  }
+  getDetailsBookSlot() {
+    return this.detailsBookSlot;
+  }
+  location;
+  setLocation(val) {
+    this.location = val;
+  }
+
+
+
+
+
 }

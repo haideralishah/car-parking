@@ -5,7 +5,7 @@ import {
   Router,
   Routes
 } from '@angular/router';
-
+import { DataService } from '../data.service';
 declare var firebase: any;
 
 @Component({
@@ -16,46 +16,68 @@ declare var firebase: any;
 export class BookSlotComponent implements OnInit {
   location;
   locationName;
-  // parkingSlot1: any = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  // parkingSlot2: any = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-  // parkingSlot3: any = [21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
   parkingSlot1: any = [];
   parkingSlot2: any = [];
   parkingSlot3: any = [];
   obj: any = {};
   bookedSlot: any = [];
-  constructor(public router: Router, public route: ActivatedRoute) {
-    route.params.subscribe(params => { this.location = params['location']; });
-
-    if (this.location == 'gj') {
+  bookingDetails: any;
+  constructor(public router: Router, public route: ActivatedRoute, public dataService: DataService) {
+    this.bookingDetails = this.dataService.getDetailsBookSlot();
+    console.log(this.bookingDetails, 'this.bookingDetails');
+    if (this.bookingDetails.location == 'gj') {
       this.locationName = 'Gulistan Johar'
+      this.bookingDetails.location = 'Gulistan Johar'
     }
-    else if (this.location == 'pp') {
+    else if (this.bookingDetails.location == 'pp') {
       this.locationName = 'Parking Plaza'
+      this.bookingDetails.location = 'Parking Plaza'
     }
-    else if (this.location == 'km') {
+    else if (this.bookingDetails.location == 'km') {
       this.locationName = 'Khadda Market'
+      this.bookingDetails.location = 'Khadda Market'
     }
   }
-
+  changeRoute() {
+    this.router.navigate(['./bookingdetails']);
+  }
 
   reservedSlot = [];
   updatedReservedSlot() {
+    // console.log(this.bookedSlot, 'this.bookedSlotthis.bookedSlotthis.bookedSlot');
+    // console.log(this.bookedSlot, 'this.bookedSlotthis.bookedSlotthis.bookedSlot');
+
     for (var i = 0; i < this.parkingSlot1.length; i++) {
-      if (this.bookedSlot.indexOf(this.parkingSlot1[i].slotNumber) != -1) {
-        this.parkingSlot1[i].slotStatus = 'reserved';
+      for (var j = 0; j < this.bookedSlot.length; j++) {
+        // console.log(this.bookedSlot[j], 'this.bookedSlot[j]');
+        console.log(this.parkingSlot1[i].slotNumber, 'this.parkingSlot1[i] Outside Box');
+        if (this.bookedSlot[j].slotNumber == this.parkingSlot1[i].slotNumber && this.bookedSlot[j].location == this.bookingDetails.location && (this.bookedSlot[j].startTimeInMilliSeconds >= this.bookingDetails.startTimeInMilliSeconds && this.bookedSlot[j].endTimeInMilliSeconds <= this.bookingDetails.endTimeInMilliSeconds) || (this.bookedSlot[j].endTimeInMilliSeconds >= this.bookingDetails.startTimeInMilliSeconds && this.bookedSlot[j].endTimeInMilliSeconds <= this.bookingDetails.endTimeInMilliSeconds)) {
+          console.log(this.bookedSlot[j].slotNumber, '**************************');
+          console.log(this.parkingSlot1[i].slotNumber, '**************************');
+
+          this.parkingSlot1[i].slotStatus = 'reserved';
+        }
+
+        // if (this.bookedSlot[j].slotNumber == this.parkingSlot1[i].slotNumber && this.bookedSlot[j].location == this.bookingDetails.location && (this.bookedSlot[j].startTimeInMilliSeconds > this.bookingDetails.startTimeInMilliSeconds && this.bookedSlot[j].endTimeInMilliSeconds < this.bookingDetails.endTimeInMilliSeconds) || (this.bookedSlot[j].endTimeInMilliSeconds > this.bookingDetails.startTimeInMilliSeconds && this.bookedSlot[j].endTimeInMilliSeconds < this.bookingDetails.endTimeInMilliSeconds)) {
+        //   console.log(this.parkingSlot1[i].slotNumber, '**************************');
+        // }
       }
     }
-    for (var i = 0; i < this.parkingSlot2.length; i++) {
-      if (this.bookedSlot.indexOf(this.parkingSlot2[i].slotNumber) != -1) {
-        this.parkingSlot2[i].slotStatus = 'reserved';
-      }
-    }
-    for (var i = 0; i < this.parkingSlot3.length; i++) {
-      if (this.bookedSlot.indexOf(this.parkingSlot3[i].slotNumber) != -1) {
-        this.parkingSlot3[i].slotStatus = 'reserved';
-      }
-    }
+    // for (var i = 0; i < this.parkingSlot1.length; i++) {
+    //   if (this.bookedSlot.indexOf(this.parkingSlot1[i].slotNumber) != -1) {
+    //     this.parkingSlot1[i].slotStatus = 'reserved';
+    //   }
+    // }
+    // for (var i = 0; i < this.parkingSlot2.length; i++) {
+    //   if (this.bookedSlot.indexOf(this.parkingSlot2[i].slotNumber) != -1) {
+    //     this.parkingSlot2[i].slotStatus = 'reserved';
+    //   }
+    // }
+    // for (var i = 0; i < this.parkingSlot3.length; i++) {
+    //   if (this.bookedSlot.indexOf(this.parkingSlot3[i].slotNumber) != -1) {
+    //     this.parkingSlot3[i].slotStatus = 'reserved';
+    //   }
+    // }
   }
 
 
@@ -77,8 +99,8 @@ export class BookSlotComponent implements OnInit {
 
 
     firebase.database().ref('/bookedslots').on('child_added', (data) => {
-      let obj = data.val().slotNumber;
-      // obj.id = data.key;
+      let obj = data.val();
+      obj.id = data.key;
       this.bookedSlot.push(obj)
 
       this.updatedReservedSlot()
@@ -98,7 +120,40 @@ export class BookSlotComponent implements OnInit {
       }, 3000);
     }
     else {
-      this.router.navigate(['./bookingdetails', selectedSlot.slotNumber]);
+
+      console.log(this.bookingDetails);
+      let that = this;
+      this.bookingDetails.slotNumber = selectedSlot.slotNumber;
+      var userId = firebase.auth().currentUser.uid;
+      firebase.database().ref('/users/' + userId).once('value').then(function (snapshot) {
+        var user = snapshot.val();
+        console.log(user, 'user');
+        that.bookingDetails.email = user.email
+        that.bookingDetails.mobilenumber = user.mobNumber
+        that.bookingDetails.userName = user.userName
+        that.bookingDetails.uid = userId
+        console.log(that.bookingDetails, 'bookingDetails');
+        firebase.database().ref('bookedslots/').push(that.bookingDetails)
+          .then((v) => {
+            // console.log(v);
+            that.bookingDetails = {};
+            // this.warningPublish = false;
+
+          });;
+        // ...
+      });
+
+
+
+
+      // firebase.database().ref('bookedslots/').push(this.bookingDetails)
+      //   .then((v) => {
+      //     console.log(v);
+      //     that.bookingDetails = {};
+      //     // this.warningPublish = false;
+
+      //   });;
+      // this.router.navigate(['./bookingdetails', selectedSlot.slotNumber]);
     }
 
 

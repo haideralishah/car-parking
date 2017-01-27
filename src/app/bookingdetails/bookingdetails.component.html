@@ -1,3 +1,23 @@
-<p>
-  bookingdetails works!
-</p>
+<div class="center-content top-position">
+  <div class="form-group">
+    <label for="selectDate">Select Date:</label>
+    <input type="date" class="form-control" id="selectDate" #selectDate>
+  </div>
+  <div class="form-group">
+    <label for="selectDate">Start Time:</label>
+    <select name="starttime" id="starttime" #starttime>
+      <option *ngFor="let c of optionTime; let num = index">{{c}}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="selecthours">Select Hours:</label>
+    <input type="number" class="form-control" id="selecthours" #selecthours>
+  </div>
+  <!--<button (click)='changeRoute()'>click </button>-->
+  <button type="submit" class="btn btn-warning" (click)='bookingDetails(selectDate.value, starttime.value, selecthours.value)'>Select Slot</button>
+</div>
+<br> <br> <br>
+<div class="alert alert-danger center-content" *ngIf='error.status'>
+  <strong>Warning!</strong> {{error.message}}
+</div>
