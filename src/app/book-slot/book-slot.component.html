@@ -1,0 +1,33 @@
+<!--<div class="parent-slot">
+  <span *ngFor="let slot of parkingSlot1; let num = index" class="slot">{{slot}}</span>
+</div>
+<div class="parent-slot">
+  <span *ngFor="let slot of parkingSlot2; let num = index" class="slot">{{slot}}</span>
+</div>-->
+
+
+<div class="container">
+  <h2>{{locationName}} Parking Area</h2>
+  <p>Chose slot:</p>
+  <table class="table table-striped">
+    <tbody>
+      <tr class="slot">
+        <td *ngFor="let slot of parkingSlot1; let num = index" class="slot" (click)='bookSlot(slot)'>{{slot.slotNumber}}</td>
+      </tr>
+      <tr class="empty-slot">
+        <td class="empty-slot" colspan="10"></td>
+      </tr>
+
+      <tr class="slot">
+        <td *ngFor="let slot of parkingSlot2; let num = index" class="slot" (click)='bookSlot(slot)'>{{slot.slotNumber}}</td>
+      </tr>
+      <tr class="empty-slot">
+        <td class="empty-slot" colspan="10"></td>
+      </tr>
+      <tr class="slot">
+        <td *ngFor="let slot of parkingSlot3; let num = index" class="slot" (click)='bookSlot(slot)'>{{slot.slotNumber}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>

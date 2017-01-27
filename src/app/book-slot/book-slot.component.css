@@ -1,0 +1,47 @@
+.slot{
+
+    margin: 100px !important;
+    padding: 10px;
+    border-collapse: separate;
+    border-left: 5px solid #b9b900;
+    border-right: 5px solid #b9b900;
+    border-spacing: 5px 15px;
+    background-color: green;
+
+    background-image: url("../../../assets/images/parking.jpg");
+    /* Set a specified height, or the minimum height for the background image */
+    /*min-height: 500px;*/
+    /* Set background image to fixed (don't scroll along with the page) */
+    background-attachment: scroll;
+    /* Center the background image */
+    background-position: center;
+    /* Set the background image to no repeat */
+    background-repeat: repeat-x;
+    /* Scale the background image to be as large as possible */
+    background-size: cover;
+    /*background: #449d44 url("../../../assets/images/homebg.jpg") no-repeat fixed cover; */
+    height:125px; 
+    text-align: center;
+    color: yellow;
+    font-size: 25px;
+}
+.empty-slot{
+    height: 50px;
+    background-color: gray;
+
+
+    background-image: url("../../../assets/images/roads.jpg");
+    /* Set a specified height, or the minimum height for the background image */
+    /*min-height: 500px;*/
+    /* Set background image to fixed (don't scroll along with the page) */
+    background-attachment: scroll;
+    /* Center the background image */
+    background-position: center;
+    /* Set the background image to no repeat */
+    background-repeat: repeat-x;
+    /* Scale the background image to be as large as possible */
+    /*background-size: cover;*/
+    /*background: #449d44 url("../../../assets/images/homebg.jpg") no-repeat fixed cover; */
+    height:100px; 
+    text-align: center;
+}
