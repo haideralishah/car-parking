@@ -5,6 +5,8 @@ import {
   Router,
   Routes
 } from '@angular/router';
+import { DataService } from '../data.service';
+
 declare var firebase: any
 
 @Component({
@@ -14,7 +16,7 @@ declare var firebase: any
 })
 export class SignUpComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, public dataService: DataService) { }
 
   ngOnInit() {
   }
@@ -32,10 +34,9 @@ export class SignUpComponent implements OnInit {
           userName: userName,
           mobNumber: mobNumber
         })
+        this.dataService.deActiveTab();
         that.router.navigate(['./home']);
       })
-
-
       .catch(function (error) {
         // Handle Errors here.
         var errorCode = error.code;
