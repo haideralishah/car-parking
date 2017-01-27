@@ -1,3 +1,41 @@
-<p>
-  view-booking-admin works!
-</p>
+<div class="alert alert-danger center-content" *ngIf='warning.status'>
+  <strong>Alert!</strong> {{warning.message}}
+</div>
+
+<div class="alert alert-danger center-content" *ngIf='bookedSlot.length == 0'>
+  <strong>Alert!</strong> No Booking Yet.
+</div>
+<div class="container" *ngIf='bookedSlot.length > 0'>
+  <h2>Your booking details</h2>
+  <!--<p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>-->
+  <table class="table">
+    <thead>
+      <tr>
+        <th>User Name</th>
+        <th>Email</th>
+        <th>Cell Number</th>
+        <th>Location</th>
+        <th>Slot</th>
+        <th>Starting Date &amp; Time</th>
+        <th>Ending Date &amp; Time</th>
+        <th>Cancel Booking</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let slot of bookedSlot; let num = index">
+        <td>{{slot.userName}}</td>
+        <td>{{slot.email}}</td>
+        <td>{{slot.mobilenumber}}</td>
+        <td>{{slot.location}}</td>
+        <td>{{slot.slotNumber}}</td>
+        <td>{{slot.startTimeInMilliSeconds}}</td>
+        <td>{{slot.endTimeInMilliSeconds}}</td>
+
+        <td>
+          <button type="button" class="btn btn-warning" (click)='cancelBooking(slot)'>Cancel Booking</button>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
