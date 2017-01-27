@@ -141,8 +141,8 @@ export class BookSlotComponent implements OnInit {
   }
   warning: any = {};
   bookSlot(selectedSlot) {
-    this.bookingDetails = {};
-
+    // this.bookingDetails = {};
+    console.log(this.bookingDetails, ' this.bookingDetails');
     if (selectedSlot.slotStatus == 'reserved') {
       this.warning.status = true;
       this.warning.message = 'Already reserved slot, but you can reserver it in some other time.';

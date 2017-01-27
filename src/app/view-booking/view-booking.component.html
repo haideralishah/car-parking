@@ -1,3 +1,31 @@
-<p>
-  view-booking works!
-</p>
+<div class="alert alert-danger center-content" *ngIf='warning.status'>
+  <strong>Alert!</strong> {{warning.message}}
+</div>
+<div class="container">
+  <h2>Your booking details</h2>
+  <!--<p>The .table class adds basic styling (light padding and only horizontal dividers) to a table:</p>-->
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Location</th>
+        <th>Slot</th>
+        <th>Starting Date &amp; Time</th>
+        <th>Ending Date &amp; Time</th>
+        <th>Cancel Booking</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let slot of bookedSlot; let num = index">
+        <td *ngIf='slot.uid == userID'>{{slot.location}}</td>
+        <td *ngIf='slot.uid == userID'>{{slot.slotNumber}}</td>
+        <td *ngIf='slot.uid == userID'>{{slot.startTimeInMilliSeconds}}</td>
+        <td *ngIf='slot.uid == userID'>{{slot.endTimeInMilliSeconds}}</td>
+
+        <td *ngIf='slot.uid == userID'>
+          <button type="button" class="btn btn-warning" (click)='cancelBooking(slot)'>Warning</button>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>

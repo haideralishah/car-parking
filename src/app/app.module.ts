@@ -39,10 +39,10 @@ const routes: Routes = [
   { path: 'viewbookingadmin', component: ViewBookingAdminComponent },
   { path: 'viewuseradmin', component: ViewUserAdminComponent },
   { path: 'viewfeedbackadmin', component: ViewFeedbackAdminComponent },
-  
+
   { path: 'bookslot', component: BookSlotComponent },
   { path: 'bookingdetails', component: BookingdetailsComponent },
-    { path: 'bookparkingnew', component: BookparkingnewComponent },
+  { path: 'bookparkingnew', component: BookparkingnewComponent },
 
 ];
 
