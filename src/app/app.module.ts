@@ -14,7 +14,13 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { DataService } from './data.service';
 import { SigninComponent } from './signin/signin.component';
 import { ViewParkingComponent } from './view-parking/view-parking.component';
+import { BookParkingComponent } from './book-parking/book-parking.component';
+import { ViewBookingComponent } from './view-booking/view-booking.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+
 import { ViewBookingAdminComponent } from './view-booking-admin/view-booking-admin.component';
+import { ViewUserAdminComponent } from './view-user-admin/view-user-admin.component';
+import { ViewFeedbackAdminComponent } from './view-feedback-admin/view-feedback-admin.component';
 
 
 const routes: Routes = [
@@ -23,7 +29,12 @@ const routes: Routes = [
   { path: 'signup', component: SignUpComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'viewparking', component: ViewParkingComponent },
+  { path: 'bookparking', component: BookParkingComponent },
+  { path: 'viewbooking', component: ViewBookingComponent },
+  { path: 'feedback', component: FeedbackComponent },
   { path: 'viewbookingadmin', component: ViewBookingAdminComponent },
+  { path: 'viewuseradmin', component: ViewUserAdminComponent },
+  { path: 'viewfeedbackadmin', component: ViewFeedbackAdminComponent },
 ];
 
 @NgModule({
@@ -34,7 +45,12 @@ const routes: Routes = [
     NavigationComponent,
     SigninComponent,
     ViewParkingComponent,
-    ViewBookingAdminComponent
+    ViewBookingAdminComponent,
+    BookParkingComponent,
+    ViewBookingComponent,
+    FeedbackComponent,
+    ViewUserAdminComponent,
+    ViewFeedbackAdminComponent
   ],
   imports: [
     BrowserModule,
