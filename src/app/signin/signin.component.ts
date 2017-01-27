@@ -52,7 +52,7 @@ export class SigninComponent implements OnInit {
               }
               else {
                 that.dataService.setNavBar('userAuth');
-                that.router.navigate(['./bookparkingnew']);
+                that.router.navigate(['./bookparking']);
               }
               // ...
             });

@@ -22,8 +22,9 @@ export class BookParkingComponent implements OnInit {
   }
   setLocation(location) {
     console.log(location);
+    console.log(location);
     this.dataService.setLocation(location);
-    this.router.navigate(['./bookparkingnew']);
+    this.router.navigate(['./bookingdetails']);;
   }
 
 }
