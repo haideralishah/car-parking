@@ -1,3 +1,49 @@
-<p>
-  feedback works!
-</p>
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal" *ngIf='!currentUserFeedback.feedback'>Submit Feedback</button>
+<!--{{feedbackData}}-->
+
+
+<div *ngIf='currentUserFeedback != {}' class="custom-container">
+  <h2 *ngIf='currentUserFeedback.feedback'>Your Feedback</h2>
+  <p class="your-feed">{{currentUserFeedback.feedback}}</p>
+  <p class="feed-reply">{{currentUserFeedback.feedbackReply}}</p>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Feedback</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="comment">Feedback:</label>
+          <textarea class="form-control" rows="5" id="comment" #feedback></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)='sendFeedback(feedback.value)'>Send Feedback</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<!--<div class="container" *ngFor="let feed of feedback; let num = index">
+  <div class="jumbotron">
+    <h1>Your Feedback</h1>
+    <p>{{feed.feedback}}</p>
+    <p>{{feed.feedbackReply}}</p>
+  </div>
+</div>-->
+<!--<div *ngFor="let feed of feedback; let num = index">
+  <h1>Your Feedback</h1>
+  <h3>{{feed.feedback}}</h3>
+  <h3>{{feed.feedbackReply}}</h3>
+</div>-->

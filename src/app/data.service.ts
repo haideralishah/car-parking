@@ -22,12 +22,12 @@ export class DataService {
   }
 
   setActiveTab() {
-    this.activeTab.style.backgroundColor = '#eea236';
-    this.el1.style.backgroundColor = '#f0ad4e';
-    this.el2.style.backgroundColor = '#f0ad4e';
-    if (this.el3) {
-      this.el3.style.backgroundColor = '#f0ad4e';
-    }
+    // this.activeTab.style.backgroundColor = '#eea236';
+    // this.el1.style.backgroundColor = '#f0ad4e';
+    // this.el2.style.backgroundColor = '#f0ad4e';
+    // if (this.el3) {
+    //   this.el3.style.backgroundColor = '#f0ad4e';
+    // }
 
   }
 

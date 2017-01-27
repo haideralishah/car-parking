@@ -4,7 +4,7 @@
       <a class="navbar-brand brand-link" #home>Auto Parking</a>
     </div>
     <ul class="nav navbar-nav" *ngIf='dataService.currentNavBar == "userAuth"'>
-      <li><a [routerLink]="['viewparking']" class="success-link" #viewparking (click)='setActiveRoute(viewparking,bookparking,viewbooking,feedback)'>View Parking</a></li>
+      <!--<li><a [routerLink]="['viewparking']" class="success-link" #viewparking (click)='setActiveRoute(viewparking,bookparking,viewbooking,feedback)'>View Parking</a></li>-->
       <li><a [routerLink]="['bookparking']" class="success-link" #bookparking (click)='setActiveRoute(bookparking, viewparking,viewbooking,feedback)'>Book Parking</a></li>
       <li><a [routerLink]="['viewbooking']" class="success-link" #viewbooking (click)='setActiveRoute( viewbooking,viewparking,bookparking,feedback)'>View Booking</a></li>
       <li><a [routerLink]="['feedback']" class="success-link" #feedback (click)='setActiveRoute(feedback,viewparking,bookparking,viewbooking)'>Feedback</a></li>
