@@ -11,5 +11,8 @@ export class BookParkingComponent implements OnInit {
 
   ngOnInit() {
   }
+  setLocation(location) {
+    console.log(location);
+  }
 
 }
